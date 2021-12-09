@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ConceptualCameraAPI.Services;
 
 namespace ConceptualCameraAPI
 {
@@ -25,6 +26,8 @@ namespace ConceptualCameraAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Inject the two classes used to manipulate the data models
+            services.AddTransient<ICameraServices, CameraServices>();
             services.AddControllers();
         }
 
@@ -37,11 +40,8 @@ namespace ConceptualCameraAPI
             }
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
