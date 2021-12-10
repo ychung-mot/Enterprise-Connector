@@ -7,5 +7,11 @@ namespace ConceptualCameraAPI.Models
 {
     public class ImageModel
     {
+        public string Image { get; set; }
+
+        public DateTime Taken { get; set; }
+
+        public int xPixel { get; set; }
+        public int yPixel { get; set; }
     }
 }

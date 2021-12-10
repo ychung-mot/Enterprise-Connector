@@ -27,7 +27,7 @@ namespace ConceptualCameraAPI
         public void ConfigureServices(IServiceCollection services)
         {
             // Inject the two classes used to manipulate the data models
-            services.AddTransient<ICameraServices, CameraServices>();
+            services.AddTransient<ICameraServices, DummyCameraServices>();
             services.AddControllers();
         }
 

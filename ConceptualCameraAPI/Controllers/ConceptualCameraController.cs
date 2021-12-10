@@ -46,9 +46,16 @@ namespace ConceptualCameraAPI.Controllers
 
         // GET: MOTICamera/Camera/{id}/Image
         [HttpGet("Camera/{id}/Image")]
-        public async Task<ActionResult> GetCameraImage(int id)
+        public async Task<ActionResult> GetCameraImage(int id, [FromQuery] string ResponseParameters = "")
         {
-            return await Task<ActionResult>.FromResult(Ok("Information about the image from a camera + image"));
+            return Ok(await _cameraServices.GetCameraImageAsync(id, ResponseParameters));
+        }
+
+        // GET: MOTICamera/Camera/{id}/Image
+        [HttpGet("Camera/{id}/Images")]
+        public async Task<ActionResult> GetCameraImages(int id, [FromQuery] DateTime? Start = null, [FromQuery] DateTime? End = null, [FromQuery] string MetadataParameters ="", [FromQuery] string ResponseParameters = "")
+        {
+            return Ok(await _cameraServices.GetCameraImagesAsync(id, Start ?? DateTime.Now, End ?? DateTime.Now - TimeSpan.FromDays(-1), MetadataParameters, ResponseParameters));
         }
 
         // GET: MOTICamera/Camera/{id}/Video
