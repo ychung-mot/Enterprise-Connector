@@ -44,11 +44,11 @@ namespace ConceptualCameraAPI.Data
 
                 // Load the full image to base64 string
                 _image.Taken = _taken;
-                _image.Image = Convert.ToBase64String(File.ReadAllBytes(@".\Data\" + i.ToString() + ".jpg"));
+                _image.Image = Convert.ToBase64String(File.ReadAllBytes(@"Data" + Path.VolumeSeparatorChar + i.ToString() + ".jpg"));
                 Images.Add(i, _image);
 
                 _thumbImage.Taken = _taken;
-                _thumbImage.Image = Convert.ToBase64String(File.ReadAllBytes(@".\Data\" + i.ToString() + "-t.jpg"));
+                _thumbImage.Image = Convert.ToBase64String(File.ReadAllBytes(@"Data" + Path.VolumeSeparatorChar + i.ToString() + "-t.jpg"));
                 ThumbnailImages.Add(i, _thumbImage);
 
 

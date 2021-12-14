@@ -17,6 +17,13 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "use64Bit": true
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/v1/ping",
+      "publishAllPorts": true,
+      "useSSL": true
     }
   }
 }
