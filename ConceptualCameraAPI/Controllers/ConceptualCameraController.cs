@@ -31,35 +31,35 @@ namespace ConceptualCameraAPI.Controllers
         }
 
         // GET: v1/Cameras
-        [HttpGet("Cameras")]
+        [HttpGet("cameras")]
         public async Task<ActionResult> GetCameras(int id)
         {
             return Ok(await _cameraServices.GetCamerasAsync());
         }
 
         // GET: v1/Camera/{id}
-        [HttpGet("Camera/{id}")]
+        [HttpGet("camera/{id}")]
         public async Task<ActionResult> GetCamera(int id)
         {
             return Ok(await _cameraServices.GetCameraDetailsAsync(id));
         }
 
         // GET: MOTICamera/Camera/{id}/Image
-        [HttpGet("Camera/{id}/Image")]
+        [HttpGet("camera/{id}/image")]
         public async Task<ActionResult> GetCameraImage(int id, [FromQuery] string ResponseParameters = "")
         {
             return Ok(await _cameraServices.GetCameraImageAsync(id, ResponseParameters));
         }
 
         // GET: MOTICamera/Camera/{id}/Image
-        [HttpGet("Camera/{id}/Images")]
+        [HttpGet("camera/{id}/images")]
         public async Task<ActionResult> GetCameraImages(int id, [FromQuery] DateTime? Start = null, [FromQuery] DateTime? End = null, [FromQuery] string MetadataParameters ="", [FromQuery] string ResponseParameters = "")
         {
             return Ok(await _cameraServices.GetCameraImagesAsync(id, Start ?? DateTime.Now, End ?? DateTime.Now - TimeSpan.FromDays(-1), MetadataParameters, ResponseParameters));
         }
 
         // GET: MOTICamera/Camera/{id}/Video
-        [HttpGet("Camera/{id}/Video")]
+        [HttpGet("camera/{id}/video")]
         public async Task<ActionResult> GetCameraVideo(int id)
         {
             return await Task<ActionResult>.FromResult(Ok("Information about the camera video stream"));
