@@ -15,6 +15,7 @@ Enterprise integrations component for the enterprise connector project.
 <!--- Example: <library_name> - [![GitHub](<shield_icon_link>)](<path_to_library_LICENSE>) --->
 
 ## Project Status
+
 - [x] Development
 - [ ] Production/Maintenance
 
@@ -31,8 +32,12 @@ Enterprise integrations component for the enterprise connector project.
 <!--- setup env vars, secrets, instructions... --->
 
 ## Deployment (Local Development)
-* Developer Workstation Requirements/Setup:
-<!--- instruction on Minishift/Docker/Other services.. --->
+
+### Developer Workstation Requirements/Setup:
+
+- Docker Desktop
+- Maven
+- JDK 17
 
 * Application Specific Setup:
 <!--- instruction on setup local environment and dependencies.. --->
