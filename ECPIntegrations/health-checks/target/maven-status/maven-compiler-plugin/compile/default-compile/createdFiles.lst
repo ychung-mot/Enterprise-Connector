@@ -1,0 +1,4 @@
+sample\camel\MonkeyHealthCheck.class
+sample\camel\MyRouteBuilder.class
+sample\camel\MyConfiguration.class
+sample\camel\Application.class

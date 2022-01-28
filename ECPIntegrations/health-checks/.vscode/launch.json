@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Application<camel-example-spring-boot-health-checks>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "sample.camel.Application",
+            "projectName": "camel-example-spring-boot-health-checks",
+            "args": ""
+        }
+    ]
+}
