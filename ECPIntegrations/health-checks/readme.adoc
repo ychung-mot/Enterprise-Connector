@@ -4,6 +4,19 @@ This example shows how to work with a simple Apache Camel application using Spri
 
 The example is leveraged as a sanity check ensure OpenShift deployment and build pipeline are functioning for ECP Project.  
 
+Demo REST code adapted from https://github.com/monodot/camel-demos/tree/master/examples/spring-boot/rest-service
+
+=== To Use
+
+---
+curl http://localhost:8080/camel/api
+
+curl --request POST \
+    --data "{ \"name\": \"Jeff Mills\" }" \
+    --header "Content-Type: application/json" \
+    http://localhost:8080/camel/api/
+---
+
 NOTE: Some of the routes fail intentionally to have health check monitor their failures
 
 === How to run
