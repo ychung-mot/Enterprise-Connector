@@ -1,0 +1,27 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-apigateway-to-logstash
+spec:
+  podSelector:
+    matchLabels:
+      deployment: logstash-local
+  ingress:
+    - ports:
+        - protocol: TCP
+          port: 8001
+      from:
+        - namespaceSelector:
+            matchLabels:
+              environment: prod
+              name: 264e6f
+    - ports:
+        - protocol: TCP
+          port: 8001
+      from:
+        - namespaceSelector:
+            matchLabels:
+              environment: test
+              name: 264e6f
+  policyTypes:
+    - Ingress

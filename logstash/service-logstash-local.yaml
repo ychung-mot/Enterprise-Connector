@@ -1,0 +1,16 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: logstash-local
+  labels:
+    app: logstash-local
+    app.kubernetes.io/component: logstash-local
+    app.kubernetes.io/instance: logstash-local
+spec:
+  ports:
+    - name: 8001-tcp
+      protocol: TCP
+      port: 8001
+      targetPort: 8001
+  selector:
+    deployment: logstash-local
