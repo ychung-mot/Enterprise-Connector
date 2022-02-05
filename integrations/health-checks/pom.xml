@@ -20,20 +20,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
+    
+    <groupId>bcgov.enterprise-connector.integrations.health-checks</groupId>
+    <artifactId>health-checks</artifactId>
+    <packaging>jar</packaging>
+    <version>3.15.0-SNAPSHOT</version>
 
-    <parent>
-        <groupId>org.apache.camel.springboot.example</groupId>
-        <artifactId>examples</artifactId>
-        <version>3.15.0-SNAPSHOT</version>
-    </parent>
-
-    <artifactId>camel-example-spring-boot-health-checks</artifactId>
     <name>Camel SB Examples :: Health Checks</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring.boot-version>${spring-boot-version}</spring.boot-version>
+        <spring.boot-version>2.6.1</spring.boot-version>
+        <surefire.plugin.version>3.0.0-M4</surefire.plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -50,7 +49,7 @@
             <dependency>
                 <groupId>org.apache.camel.springboot</groupId>
                 <artifactId>camel-spring-boot-dependencies</artifactId>
-                <version>${project.version}</version>
+                <version>3.14.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -87,7 +86,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot-version}</version>
+                <version>${spring.boot-version}</version>
                 <executions>
                     <execution>
                         <goals>
