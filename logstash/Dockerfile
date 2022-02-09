@@ -5,5 +5,4 @@ EXPOSE 8001
 COPY logstash.yml /usr/share/logstash/config/logstash.yml
 COPY main_logstash.conf /usr/share/logstash/pipeline/logstash.conf
 
-RUN /usr/share/logstash/bin/logstash-plugin install logstash-filter-json_encode
 
