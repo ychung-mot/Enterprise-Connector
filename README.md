@@ -29,10 +29,11 @@ For more information on folder content check its README file. This repository ho
 
 - ```./ConceptualCameraAPI``` Proof of concept API for future state camera images access.
 - ```./integrations``` Enterprise integrations (Connectors) using Apache Camel
-- ```./observavility``` Log data management, tracing and analysis.
+- ```./observability``` Log data management, tracing and analysis.
+- ```./contentmanagement``` Content management using Ghost CMS
 - ```./openshift``` OpenShift platform resources
-- ```./docs``` General documentation.  Individual components contain their own documentation.
-
+- ```./docs``` General documentation. Individual components contain their own documentation.
+- 
 <!--- Use Tree to generate the file structure, try `tree -I '<excluded_paths>' -d -L 3`--->
 
 ## Getting Started
