@@ -11,3 +11,9 @@ Each integration is implemented in Camel and runs as a stand-alone application. 
 * ```./open511events-ghostcms``` Updates GhostCMS based website with recent Open511 API events.
 * ```./drivebc-api-proxy``` Proxy of the DriveBC API.
 * ```./health-checks``` Example project from Camel to ensure build process is working. This can be removed as integrations are established.
+
+## Jackson 2.x and JSON Objects
+
+JSON objects from Open511 can be converted to Camel-friendly Java objects using Jackson libraries.  The following site enables creation of Java objects from a source JSON file.  The Jackson annotation style is valuable because it handles non-conforming attribute names from Open511 such as +somevariable.  The + character would otherwise cause marshaling to fail.
+
+https://www.jsonschema2pojo.org/
