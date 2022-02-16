@@ -5,6 +5,5 @@
 - pipeline.id: kong
   path.config: "/usr/share/logstash/pipeline/kong_logstash.conf" 
 
-  
 - pipeline.id: kamel
   path.config: "/usr/share/logstash/pipeline/kamel_logstash.conf"
