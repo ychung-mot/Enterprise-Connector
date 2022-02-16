@@ -1,0 +1,102 @@
+_format_version: "1.1"
+services:
+  - name: Dev_Open511
+    url: <<upstreamURL>>
+    plugins:
+      - name: correlation-id
+        tags: [ ns.moti-open511.dev ]
+        config: 
+          header_name: Kong-Request-ID
+          generator: uuid#counter
+          echo_downstream: false
+      - name: request-transformer
+        tags: [ ns.moti-open511.dev ]
+        config: 
+          remove:
+            headers:
+              - X-API-KEY
+          remove:
+            querystring:
+              - X-API-KEY
+          add:
+            headers:
+              - X-API-KEY:<<upstreamkey>>
+      - name: rate-limiting
+        tags: [ ns.moti-open511.dev ]
+        enabled: true
+        config:
+          minute: 10
+          header_name: null
+          second: null
+          hour: null
+          day: null
+          month: null
+          year: null
+        protocols:
+        - http
+        - https
+      - name: tcp-log
+        tags: [ ns.moti-open511.dev ]
+        config: 
+          host: <<loggingserver>>.svc.cluster.local
+          port: 8001
+          tls: false    
+          custom_fields_by_lua:
+            CorrelationId: "return kong.request.get_header('Kong-Request-ID')"
+      - name: acl
+        tags: [ ns.moti-open511.dev ]
+        config:
+          hide_groups_header: true
+          allow: [ <<groupid>> ]
+      - name: key-auth
+        tags: [ ns.moti-open511.dev ]
+        protocols: [ http, https ]
+        config:
+          key_names: ["X-API-KEY"]
+          run_on_preflight: true
+          hide_credentials: true
+          key_in_body: false
+          anonymous: ce26955a-cf08-4907-9427-12d01c8bd94c
+    routes:
+      - tags:
+          - ns.moti-open511.dev
+        name: DevOpen5112TeirEvents
+        methods:
+          - GET
+        paths:
+          - /events
+        strip_path: false
+        hosts:
+          - dev-open511.api.gov.bc.ca
+      - tags:
+          - ns.moti-open511.dev
+        name: DevOpen5112TeirJurs
+        methods:
+          - GET
+        paths:
+          - /jurisdiction
+        strip_path: false
+        hosts:
+          - dev-open511.api.gov.bc.ca
+      - tags:
+          - ns.moti-open511.dev
+        name: DevOpen5112TierJursgeo
+        methods:
+          - GET
+        paths:
+          - /jurisdictiongeography
+        strip_path: false
+        hosts:
+          - dev-open511.api.gov.bc.ca
+      - tags:
+          - ns.moti-open511.dev
+        name: DevOpen5112TierAreas
+        methods:
+          - GET
+        paths:
+          - /areas
+        strip_path: false
+        hosts:
+          - dev-open511.api.gov.bc.ca
+    tags:
+      - ns.moti-open511.dev
