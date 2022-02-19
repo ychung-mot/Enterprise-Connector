@@ -4,38 +4,49 @@
 <!--- [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](./LICENSE) --->
 
 # <application_name>
-<!--- Description of the application. ---> 
+<!--- Description of the application. --->
 
 ## Technical Details
-<!--- Technology Stack Used. ---> 
+<!--- Technology Stack Used. --->
 
 ## Third-Party Products/Libraries used and the licenses they are covered by
 <!--- product/library and path to the LICENSE --->
 <!--- Example: <library_name> - [![GitHub](<shield_icon_link>)](<path_to_library_LICENSE>) --->
 
 ## Project Status
+
 - [x] Development
 - [ ] Production/Maintenance
 
 ## Documentation
-<!--- Point to another readme or create a GitHub Pages (https://guides.github.com/features/pages/) --->
 
 ## Security
 <!--- Authentication, Authorization, Policies, etc --->
 
 ## Files in this repository
+
+For more information on folder content check its README file. This repository holds source code for various autonomous components.
+
+- ```./ConceptualCameraAPI``` Proof of concept API for future state camera images access.
+- ```./integrations``` Enterprise integrations (Connectors) using Apache Camel
+- ```./observability``` Log data management, tracing and analysis.
+- ```./contentmanagement``` Content management using Ghost CMS
+- ```./openshift``` OpenShift platform resources
+- ```./docs``` General documentation. Individual components contain their own documentation.
+- 
 <!--- Use Tree to generate the file structure, try `tree -I '<excluded_paths>' -d -L 3`--->
 
 ## Getting Started
 <!--- setup env vars, secrets, instructions... --->
 
 ## Deployment (Local Development)
-* Developer Workstation Requirements/Setup:
+
+- Developer Workstation Requirements/Setup:
+
 <!--- instruction on Minishift/Docker/Other services.. --->
 
-* Application Specific Setup:
+- Application Specific Setup:
 <!--- instruction on setup local environment and dependencies.. --->
-
 
 ## Deployment (OpenShift)
 <!--- Best to include details in a openshift/README.md --->
@@ -44,14 +55,12 @@
 <!--- Example below, modify accordingly --->
 To report bugs/issues/feature requests, please file an [issue](../../issues).
 
-
 ## How to Contribute
 <!--- Example below, modify accordingly --->
 If you would like to contribute, please see our [CONTRIBUTING](./CONTRIBUTING.md) guidelines.
 
-Please note that this project is released with a [Contributor Code of Conduct](./CODE_OF_CONDUCT.md). 
+Please note that this project is released with a [Contributor Code of Conduct](./CODE_OF_CONDUCT.md).
 By participating in this project you agree to abide by its terms.
-
 
 ## License
 <!--- Example below, modify accordingly --->
