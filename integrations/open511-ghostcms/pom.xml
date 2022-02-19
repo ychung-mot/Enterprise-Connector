@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
@@ -36,7 +35,9 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+
     </dependencies>
+
   </dependencyManagement>
 
   <dependencies>
@@ -75,40 +76,50 @@
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-http</artifactId>
       <!-- use the same version as your Camel core version -->
-  </dependency>
-  <!-- Camel JSON Jackson -->
-  <dependency>
-    <groupId>org.apache.camel</groupId>
-    <artifactId>camel-jackson</artifactId>
-    <version>3.6.0</version>
-</dependency>
-  <!-- Camel XML Jackson -->
-<dependency>
-  <groupId>org.apache.camel</groupId>
-  <artifactId>camel-jacksonxml</artifactId>
-  <version>3.6.0</version>
-  <!-- use the same version as your Camel core version -->
-</dependency>
+    </dependency>
+    <!-- Camel JSON Jackson -->
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jackson</artifactId>
+      <version>3.6.0</version>
+    </dependency>
+    <!-- Camel XML Jackson -->
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jacksonxml</artifactId>
+      <version>3.6.0</version>
+      <!-- use the same version as your Camel core version -->
+    </dependency>
 
- <!-- JSON web token -->
-<dependency>
-  <groupId>io.jsonwebtoken</groupId>
-  <artifactId>jjwt-api</artifactId>
-  <version>0.11.2</version>
-</dependency>
-<dependency>
-  <groupId>io.jsonwebtoken</groupId>
-  <artifactId>jjwt-impl</artifactId>
-  <version>0.11.2</version>
-  <scope>runtime</scope>
-</dependency>
-<dependency>
-  <groupId>io.jsonwebtoken</groupId>
-  <artifactId>jjwt-jackson</artifactId> <!-- or jjwt-gson if Gson is preferred -->
-  <version>0.11.2</version>
-  <scope>runtime</scope>
-</dependency>
-
+    <!-- JSON web token -->
+    <dependency>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt-api</artifactId>
+      <version>0.11.2</version>
+    </dependency>
+    <dependency>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt-impl</artifactId>
+      <version>0.11.2</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt-jackson</artifactId> <!-- or jjwt-gson if Gson is preferred -->
+      <version>0.11.2</version>
+      <scope>runtime</scope>
+    </dependency>
+    <!-- Logging-->
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>net.logstash.logback</groupId>
+      <artifactId>logstash-logback-encoder</artifactId>
+      <version>5.1</version>
+    </dependency>
+    <!-- End Logging dependancies-->
 
     <!-- Test -->
     <dependency>

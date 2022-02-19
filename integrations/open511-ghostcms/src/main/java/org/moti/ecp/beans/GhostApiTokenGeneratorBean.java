@@ -1,5 +1,9 @@
 package org.moti.ecp.beans;
 
+// Bean for creating json web token.  See Java JWT: JSON Web Token for Java and Android
+// https://github.com/jwtk/jjwt#jws-create
+//
+
 import org.apache.camel.spi.annotations.Component;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -57,7 +61,7 @@ public static String createJWT(String keyid, String audience, int daysToLive,Str
 			.setExpiration(expiryDate)
 			.setAudience(audience)
 			.setIssuedAt(new Date())
-			.setHeaderParam("kid", keyid)
+			.setHeaderParam("kid", keyid) //kid	- Unique identifier for the certificate
 			;
 
 	//Builds the JWT and serializes it to a compact, URL-safe string

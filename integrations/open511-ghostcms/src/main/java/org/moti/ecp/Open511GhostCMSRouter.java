@@ -14,18 +14,18 @@ public class Open511GhostCMSRouter extends RouteBuilder {
 
     @Override
     public void configure() {
-        from("timer:hello?period={{timer.period}}").routeId("hello")
-            .transform().method("myBean", "saySomething")
-            .filter(simple("${body} contains 'foo'"))
-                .to("log:foo")
-            .end()
-            .to("stream:out");
-
+        
+            // Generate token and set header for Ghost CMS authorization
             from("timer:mytimer?repeatCount=1")
             .setHeader("Authorization", method(GhostApiTokenGeneratorBean.class, "getToken"))
-            .log("${header.Authorization}")
-            .to("stream:out");
-            //.to("direct:nextRoute"); 
+            //.log("${header.Authorization}")
+            .log("Ghost CMS Token Generated")
+//            .to("log:out")
+            // Get post details and capture date of last change as this will be required for publishing an update.
+            .toD("http://${properties:ghostcms.ghostcmshostname}${properties:ghostcms.postid}" +  "?httpMethod=GET" )
+            .log("Ghost CMS Page Call")
+  //          .to("log:out")
+            .end(); 
 
 
 
@@ -37,7 +37,7 @@ public class Open511GhostCMSRouter extends RouteBuilder {
         //     .to("stream:out")
         //     .log("Response code from the Open 511 call was: ${header.CamelHttpResponseCode}");
     
-         // Get Ghost CMS Authoriztaion Time - required for PUT
+         // Get Ghost CMS Posts 
         //  from("timer:mytimer?repeatCount=1")
         //  .toD("http://${properties:ghostcms.destination}${properties:ghostcms.postid}" +  "?httpMethod=GET" )
         //  .log("Response body from the GhostCMS call operation was: ${body}")
