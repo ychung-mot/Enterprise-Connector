@@ -15,6 +15,6 @@ Observability in ECP is provided though a standard process using leveraging mult
 
 For more information on folder content check its README file.
 
-* ```./Zipkin``` Zipkin service for tracing.
-* ```./Elasticsearch``` Elasticshearch index.
-* ```./Logstash``` Logstash.
+* ```./zipkin``` Zipkin service for tracing.
+* ```./elasticsearch``` Elasticshearch index.
+* ```./logstash``` Logstash.
