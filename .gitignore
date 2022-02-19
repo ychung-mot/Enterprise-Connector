@@ -36,3 +36,4 @@
 ehthumbs.db
 Thumbs.db
 .vscode/*
+integrations/open511-ghostcms/openshift/.env
