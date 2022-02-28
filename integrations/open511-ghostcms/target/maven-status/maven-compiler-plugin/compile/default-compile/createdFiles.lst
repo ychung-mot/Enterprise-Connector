@@ -5,7 +5,6 @@ org\moti\ecp\types\Geography.class
 org\moti\ecp\beans\GhostApiTokenGeneratorBean.class
 org\moti\ecp\types\Meta.class
 org\moti\ecp\types\Event.class
-org\moti\ecp\beans\MySpringBean.class
 org\moti\ecp\types\Open511EventsList.class
 org\moti\ecp\Open511GhostCMSApplication.class
 org\moti\ecp\types\Road.class

@@ -37,3 +37,7 @@ ehthumbs.db
 Thumbs.db
 .vscode/*
 integrations/open511-ghostcms/openshift/.env
+integrations/health-checks/target/classes/application.properties
+integrations/health-checks/target/classes/logback.xml
+integrations/health-checks/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+integrations/health-checks/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
