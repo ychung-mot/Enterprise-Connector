@@ -14,7 +14,7 @@ Each integration is implemented in Camel and runs as a stand-alone application. 
 
 ## Logging
 
-Loging is provided via Log4J and a socket connection to Logstash on port 8002.  This will result in logging to kamel* indexes in ElasticSearch
+Loging is provided via Logback with MDC enabled and a socket connection to Logstash on port 8002.  This will result in logging to camel* indexes in Elasticsearch.
 
 ## Jackson 2.x and JSON Objects
 
