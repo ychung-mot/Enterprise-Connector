@@ -6,10 +6,6 @@ import org.apache.camel.AggregationStrategy;
 import org.apache.camel.Exchange;
 import org.apache.camel.util.json.JsonArray;
 import org.apache.camel.util.json.JsonObject;
-import org.springframework.boot.json.JsonParser;
-import org.springframework.boot.json.JsonParserFactory;
-import org.apache.camel.jsonpath.springboot.*;
-import org.apache.camel.model.dataformat.JsonLibrary;
 
 public class GhostEventsPageAggregator implements AggregationStrategy {
    
