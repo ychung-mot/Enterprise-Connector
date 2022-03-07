@@ -18,8 +18,6 @@ public class Open511GhostCMSRouter extends RouteBuilder {
   @Override
   public void configure() {
 
-    // Open511 API GET 10 Events
-    //from("timer:open511events?fixedRate=true&period=60000")
     from("quartz://open511eventsTimer?cron=10+*+*+*+*+?") // CRON format for every 10 minutes
         .routeId("open511events")
         .toD("http://${properties:open511.events}" + "?httpMethod=GET" + "&${properties:open511.limit}")
