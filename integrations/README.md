@@ -11,6 +11,7 @@ Each integration is implemented in Camel and runs as a stand-alone application. 
 * ```./open511events-ghostcms``` Updates GhostCMS based website with recent Open511 API events.
 * ```./drivebc-api-proxy``` Proxy of the DriveBC API.
 * ```./health-checks``` Example project from Camel to ensure build process is working. This can be removed as integrations are established.
+* ```./drivebc-open511``` Proxy for Open511 API as used by Drive BC. Enables enriching the Open511 API results.
 
 ## Logging
 
