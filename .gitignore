@@ -43,3 +43,6 @@ integrations/health-checks/target/classes/application.properties
 integrations/health-checks/target/classes/logback.xml
 integrations/health-checks/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
 integrations/health-checks/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+integrations/drivebc-open511/target/*
+integrations/drivebc-open511/.vscode/*
+integrations/open511-ghostcms/target/classes/application.properties

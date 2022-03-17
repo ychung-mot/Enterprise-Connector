@@ -20,7 +20,7 @@ public class Open511GhostCMSRouter extends RouteBuilder {
 
     from("quartz://open511eventsTimer?cron=10+*+*+*+*+?") // CRON format for every 10 minutes
         .routeId("open511events")
-        .toD("http://${properties:open511.events}" + "?httpMethod=GET" + "&${properties:open511.limit}")
+        .toD("http://${properties:open511.events}" + "?httpMethod=GET" + "&${properties:open511.parameters}")
         .unmarshal(new JacksonDataFormat(Open511Events.class))
         .marshal().jacksonxml(true)
         .to("xslt:open511.xsl") // transform to HTML as this will be used in the Ghost CMS page update
