@@ -4,18 +4,17 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.moti.ecp</groupId>
-  <artifactId>open511-ghostcms</artifactId>
+  <artifactId>drivebc-open511</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
 
-  <name>Open511 Ghost CMS</name>
+  <name>Drive BC Open511 Proxy</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <spring.boot-version>2.6.1</spring.boot-version>
     <surefire.plugin.version>3.0.0-M4</surefire.plugin.version>
-    <camel.version>3.6.0</camel.version>
   </properties>
 
   <dependencyManagement>
@@ -36,9 +35,7 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-
     </dependencies>
-
   </dependencyManagement>
 
   <dependencies>
@@ -62,56 +59,34 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-netty-http</artifactId>
 
-    <!-- Camel -->
+    </dependency>
+    <!-- support swagger api-doc -->
     <dependency>
       <groupId>org.apache.camel.springboot</groupId>
-      <artifactId>camel-spring-boot-starter</artifactId>
+      <artifactId>camel-swagger-java-starter</artifactId>
     </dependency>
+
+    <!-- use http as rest producer -->
     <dependency>
       <groupId>org.apache.camel.springboot</groupId>
-      <artifactId>camel-stream-starter</artifactId>
+      <artifactId>camel-http-starter</artifactId>
     </dependency>
-    <!-- Camel HTTP -->
-    <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-http</artifactId>
-      <!-- <version>${camel.version}</version> -->
-      <!-- use the same version as your Camel core version -->
-    </dependency>
-    <!-- Camel JSON Jackson -->
-    <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-jackson</artifactId>
-    </dependency>
-    <!-- Camel XML Jackson -->
-    <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-jacksonxml</artifactId>
-    </dependency>
-    <!-- Camel Quartz--> 
+
+    <!-- Zipkin-->
     <dependency>
       <groupId>org.apache.camel.springboot</groupId>
-      <artifactId>camel-quartz-starter</artifactId>
-  </dependency>
-    <!-- JSON web token -->
-    <dependency>
-      <groupId>io.jsonwebtoken</groupId>
-      <artifactId>jjwt-api</artifactId>
-      <version>0.11.2</version>
+      <artifactId>camel-zipkin-starter</artifactId>
     </dependency>
-    <dependency>
-      <groupId>io.jsonwebtoken</groupId>
-      <artifactId>jjwt-impl</artifactId>
-      <version>0.11.2</version>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jsonwebtoken</groupId>
-      <artifactId>jjwt-jackson</artifactId> <!-- or jjwt-gson if Gson is preferred -->
-      <version>0.11.2</version>
-      <scope>runtime</scope>
-    </dependency>
+
     <!-- Logging-->
     <dependency>
       <groupId>commons-logging</groupId>
@@ -123,20 +98,36 @@
       <version>5.1</version>
     </dependency>
     <!-- End Logging dependancies-->
-    <!-- Zipkin-->
+
+    <!-- Camel -->
     <dependency>
       <groupId>org.apache.camel.springboot</groupId>
-      <artifactId>camel-zipkin-starter</artifactId>
-    </dependency>
-    <!-- Model Mapping-->
-    <dependency>
-      <groupId>org.apache.camel.springboot</groupId>
-      <artifactId>camel-jaxb-starter</artifactId>
+      <artifactId>camel-spring-boot-starter</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.camel.springboot</groupId>
-      <artifactId>camel-jsonpath-starter</artifactId>
-      <version>3.15.0</version>
+      <artifactId>camel-stream-starter</artifactId>
+    </dependency>
+
+    <!-- When using the REST DSL, Camel will look for org.apache.camel.spi.RestConsumerFactory on the classpath.
+		By using Camel's servlet-starter, we can configure the embedded servlet container to act as a RestConsumerFactory -->
+    <!-- See: https://camel.apache.org/components/latest/servlet-component.html#_usage_with_spring_boot -->
+    <!-- This will automatically map all requests to /camel/* to our RESTful API -->
+    <dependency>
+      <groupId>org.apache.camel.springboot</groupId>
+      <artifactId>camel-servlet-starter</artifactId>
+    </dependency>
+
+    <!-- Add the ability to convert JSON to a plain old Java object (POJO) -->
+    <!-- We use the `-starter` version of the component in Spring Boot -->
+    <dependency>
+      <groupId>org.apache.camel.springboot</groupId>
+      <artifactId>camel-jackson-starter</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-servlet</artifactId>
     </dependency>
 
     <!-- Test -->
@@ -150,7 +141,6 @@
       <artifactId>camel-test-spring-junit5</artifactId>
       <scope>test</scope>
     </dependency>
-
   </dependencies>
 
   <build>
@@ -160,8 +150,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
         <configuration>
-          <source>1.11</source>
-          <target>1.11</target>
+          <source>1.8</source>
+          <target>1.8</target>
         </configuration>
       </plugin>
       <plugin>

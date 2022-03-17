@@ -20,13 +20,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    
+
     <groupId>bcgov.enterprise-connector.integrations.health-checks</groupId>
     <artifactId>health-checks</artifactId>
     <packaging>jar</packaging>
     <version>3.15.0-SNAPSHOT</version>
 
-    <name>Camel SB Examples :: Health Checks</name>
+    <name>Health Checks</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -79,6 +79,22 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-management</artifactId>
         </dependency>
+        <!-- Logging-->
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>5.1</version>
+        </dependency>
+        <!-- End Logging dependancies-->
+        <!-- Zipkin-->
+        <dependency>
+            <groupId>org.apache.camel.springboot</groupId>
+            <artifactId>camel-zipkin-starter</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -88,10 +104,10 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                  <source>1.8</source>
-                  <target>1.8</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
-            </plugin>           
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

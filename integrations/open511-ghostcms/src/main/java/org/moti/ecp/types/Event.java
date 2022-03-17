@@ -3,11 +3,15 @@ package org.moti.ecp.types;
 
 import java.util.List;
 import javax.annotation.Generated;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties({ "+ivr_message", "+linear_reference_km" })
+
 @JsonPropertyOrder({
     "jurisdiction_url",
     "url",
@@ -46,10 +50,10 @@ public class Event {
     public String updated;
     @JsonProperty("description")
     public String description;
-    @JsonProperty("+ivr_message")
-    public String _ivr_message;
-    @JsonProperty("+linear_reference_km")
-    public Float _linear_reference_km;
+    // @JsonProperty("+ivr_message")
+    // public String _ivr_message;
+    // @JsonProperty("+linear_reference_km")
+    // public Float _linear_reference_km;
     @JsonProperty("schedule")
     public Schedule schedule;
     @JsonProperty("event_type")
