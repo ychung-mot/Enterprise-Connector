@@ -5,12 +5,14 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      deployment: logstash-local
+      deploymentconfig: logstash-git
   ingress:
     - ports:
         - protocol: TCP
           port: 8001
+        - protocol: TCP
+          port: 8002
       from:
         - podSelector: {}
-policyTypes:
+  policyTypes:
     - Ingress
