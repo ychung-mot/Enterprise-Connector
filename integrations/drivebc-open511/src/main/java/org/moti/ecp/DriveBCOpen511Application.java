@@ -1,20 +1,18 @@
 package org.moti.ecp;
 
-import org.apache.camel.zipkin.starter.CamelZipkin;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-//import org.apache.camel.opentracing.starter.CamelOpenTracing;
+import org.apache.camel.zipkin.starter.CamelZipkin;
 
 @SpringBootApplication
-//@CamelOpenTracing
 @CamelZipkin
-public class Open511GhostCMSApplication {
+public class DriveBCOpen511Application {
 
     /**
      * A main method to start this application.
      */
     public static void main(String[] args) {
-        SpringApplication.run(Open511GhostCMSApplication.class, args);
+        SpringApplication.run(DriveBCOpen511Application.class, args);
     }
 
 }
