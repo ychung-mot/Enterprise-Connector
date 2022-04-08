@@ -1,6 +1,6 @@
 <!--- NOTE: This is a template for your project README. Edit the content according to the comments provided.--->
 
-# <Product Lifecycle Badge>
+# <Product_Lifecycle_Badge>
 [![Lifecycle:Maturing](https://img.shields.io/badge/Lifecycle-Maturing-007EC6)](<Redirect-URL>)
 
 # <application_license_badge>
