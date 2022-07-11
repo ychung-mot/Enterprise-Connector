@@ -6,6 +6,7 @@ import org.apache.camel.component.jackson.JacksonDataFormat;
 import org.moti.ecp.aggregators.GhostEventsPageAggregator;
 import org.moti.ecp.beans.GhostApiTokenGeneratorBean;
 import org.moti.ecp.types.Open511Events;
+import org.moti.ecp.types.Weather;
 import org.springframework.stereotype.Component;
 
 /**
@@ -44,6 +45,35 @@ public class Open511GhostCMSRouter extends RouteBuilder {
         // Get page so we can capture date of last change as this will be required for publishing an update.
         .toD("http://{{ghostcms.ghostcmshostname}}{{ghostcms.pageid}}" + "?httpMethod=GET")
         .end();
+
+    from("quartz://iotEventsTimer?cron={{drivebc-ghostcms.camel.cron}}") // CRON format for every 10 minutes
+        .routeId("{{camel.springboot.name.iot}}")   
+         
+        .setHeader(Exchange.HTTP_METHOD, simple("GET"))
+        .setHeader("Authorization", simple("{{iotcentral.auth}}"))        
+        .log("API Call to : https://{{iotcentral.weather.api}}")
+        .toD("https://{{iotcentral.weather.api}}")
+
+        // Set header witha formatted date for use in XML transformation
+        .setHeader("current-datetime",  simple ("${date:now:yyyy-MM-dd HH:mm:ss}") )
+        .unmarshal(new JacksonDataFormat(Weather.class))
+        .marshal().jacksonxml(true)
+        .to("xslt:iot.xsl") // transform to HTML as this will be used in the Ghost CMS page update
+        .removeHeaders("CamelHttp*") // remove any Camel headers because the HTML is being stored in the Ghost CMS Page       
+        .enrich("direct:ghost-update-iot", new GhostEventsPageAggregator())         
+        .setHeader("Authorization", method(GhostApiTokenGeneratorBean.class, "getToken")) //.. likely need to get a new token first but maybe not       
+        .setHeader(Exchange.HTTP_METHOD, simple("PUT"))
+				.setHeader(Exchange.CONTENT_TYPE, constant("application/json"))
+        .toD("http://{{ghostcms.ghostcmshostname}}{{ghostcms.iotPageid}}" + "?source=html&httpMethod=PUT") // Update Ghost Page with aggregate	-- source=html tells ghost we'll be using html instead of mobiledoc format	
+        .end();
+    
+    from("direct:ghost-update-iot")
+        // Generate token and set header for Ghost CMS authorization
+        .setHeader("Authorization", method(GhostApiTokenGeneratorBean.class, "getToken"))
+        // Get page so we can capture date of last change as this will be required for publishing an update.
+        .toD("http://{{ghostcms.ghostcmshostname}}{{ghostcms.iotPageid}}" + "?httpMethod=GET")
+        .end();
+
   }
 
 }
