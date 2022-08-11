@@ -1,4 +1,5 @@
-﻿using System.IO.Compression;
+﻿using Hangfire;
+using System.IO.Compression;
 
 namespace CameraWebApp
 {
@@ -17,6 +18,7 @@ namespace CameraWebApp
             _env = env;
         }
 
+        [AutomaticRetry(Attempts = 0)]
         public async Task GetImages()
         {
             var response = await _client.GetLatestImages();
