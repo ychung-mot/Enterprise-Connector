@@ -44,6 +44,7 @@ app.MapRazorPages();
 
 app.UseHangfireDashboard();
 
-RecurringJob.AddOrUpdate<ImageService>("GetImages", x => x.GetImages(), "*/30 * * * *");
+var interval = builder.Configuration.GetValue<string>("Hangfire:Interval");
+RecurringJob.AddOrUpdate<ImageService>("GetImages", x => x.GetImages(), $"*/{interval} * * * *");
 
 app.Run();
