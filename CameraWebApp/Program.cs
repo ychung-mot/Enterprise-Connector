@@ -44,6 +44,6 @@ app.MapRazorPages();
 
 app.UseHangfireDashboard();
 
-RecurringJob.AddOrUpdate<ImageService>("GetImages", x => x.GetImages(), "*/3 * * * *");
+RecurringJob.AddOrUpdate<ImageService>("GetImages", x => x.GetImages(), "*/30 * * * *");
 
 app.Run();
