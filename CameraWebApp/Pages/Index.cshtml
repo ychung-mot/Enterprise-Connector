@@ -1,0 +1,32 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<div class="container">
+    <div class="text-center d-flex">
+        <div class="card my-1 mx-1" style="width: 30rem">
+            <div class="card-header"><h5>East</h5></div>
+            <div class="card-body"><img src="/images/East.jpg" /></div>
+        </div>
+        <div class="card my-1 mx-1" style="width: 30rem">
+            <div class="card-header"><h5>West</h5></div>
+            <div class="card-body"><img src="/images/West.jpg" /></div>
+        </div>
+    </div>
+
+    <div class="text-center d-flex">
+        <div class="card my-1 mx-1" style="width: 30rem">
+            <div class="card-header"><h5>North</h5></div>
+            <div class="card-body"><img src="/images/North.jpg" /></div>
+        </div>
+        <div class="card my-1 mx-1" style="width: 30rem">
+            <div class="card-header"><h5>South</h5></div>
+            <div class="card-body"><img src="/images/South_655.jpg" /></div>
+        </div>
+    </div>
+</div>
+
+<div class="container my-3">
+    Last fetched at @Model.UpdatedTime UTC
+</div>
