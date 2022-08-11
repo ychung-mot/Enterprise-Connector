@@ -46,5 +46,6 @@ app.UseHangfireDashboard();
 
 var interval = builder.Configuration.GetValue<string>("Hangfire:Interval");
 RecurringJob.AddOrUpdate<ImageService>("GetImages", x => x.GetImages(), $"*/{interval} * * * *");
+Console.WriteLine($"Recurring Job Registered with the interval {interval} minutes");
 
 app.Run();

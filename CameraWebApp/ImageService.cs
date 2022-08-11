@@ -28,11 +28,12 @@ namespace CameraWebApp
 
             await stream.CopyToAsync(mStream);
 
-            var filePath = $"{_env.WebRootPath}/images/images.zip";
+            var directory = Path.Combine(_env.WebRootPath, "images");
+            var filePath = Path.Combine(directory, "images.zip");
 
             File.WriteAllBytes(filePath, mStream.ToArray());
 
-            ZipFile.ExtractToDirectory(filePath, $"{_env.WebRootPath}/images", true);
+            ZipFile.ExtractToDirectory(filePath, directory, true);
         }
     }
 }
