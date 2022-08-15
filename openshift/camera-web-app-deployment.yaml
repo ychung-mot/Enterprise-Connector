@@ -94,3 +94,18 @@ spec:
     name: camera-web-app
     weight: 100
   wildcardPolicy: None
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: camera-web-app
+spec:
+  podSelector:
+    matchLabels:
+      deploymentconfig: camera-web-app
+  ingress:
+    - ports:
+        - protocol: TCP
+          port: 8080
+  policyTypes:
+    - Ingress
